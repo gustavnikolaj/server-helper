@@ -1,0 +1,21 @@
+{
+  "name": "@gustavnikolaj/koa-server-helper",
+  "description": "Resolve configuration and restart server on changes.",
+  "license": "MIT",
+  "author": "Gustav Nikolaj Olsen <gustavnikolaj@gmail.com>",
+  "version": "0.0.0",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "jest --watch"
+  },
+  "dependencies": {
+    "glob": "^7.1.2",
+    "invariant": "^2.2.2"
+  },
+  "devDependencies": {
+    "eslint": "4.10.0",
+    "eslint-config-pretty-standard": "1.1.0",
+    "jest": "21.2.1",
+    "prettier": "1.7.4"
+  }
+}
