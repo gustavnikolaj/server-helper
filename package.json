@@ -3,7 +3,7 @@
   "description": "Resolve configuration and restart server on changes.",
   "license": "MIT",
   "author": "Gustav Nikolaj Olsen <gustavnikolaj@gmail.com>",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "lint": "eslint .",
     "test": "jest --watch"
