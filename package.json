@@ -2,6 +2,7 @@
   "name": "@gustavnikolaj/server-helper",
   "description": "Resolve configuration and restart server on changes.",
   "license": "MIT",
+  "main": "index.js",
   "author": "Gustav Nikolaj Olsen <gustavnikolaj@gmail.com>",
   "version": "2.0.1",
   "scripts": {
@@ -18,5 +19,14 @@
     "jest": "21.2.1",
     "prettier": "1.7.4",
     "unexpected": "^10.37.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustavnikolaj/server-helper.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/gustavnikolaj/server-helper/issues"
+  },
+  "homepage": "https://github.com/gustavnikolaj/server-helper#readme"
 }
