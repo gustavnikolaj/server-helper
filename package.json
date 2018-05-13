@@ -1,5 +1,5 @@
 {
-  "name": "@gustavnikolaj/koa-server-helper",
+  "name": "@gustavnikolaj/server-helper",
   "description": "Resolve configuration and restart server on changes.",
   "license": "MIT",
   "author": "Gustav Nikolaj Olsen <gustavnikolaj@gmail.com>",
