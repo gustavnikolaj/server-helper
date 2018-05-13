@@ -24,7 +24,7 @@ serverHelper({
   appFileName: resolve(__dirname, "../lib/app"),
   config: {
     port: 5000,
-    typeOfWorld: 'Express-world
+    typeOfWorld: 'Express-world'
   }
 });
 ```
