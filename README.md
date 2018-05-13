@@ -8,6 +8,8 @@ Simple node.js server helper module.
   experience.
 - It can be set up to run the process in band, making it easier to attach
   debuggers.
+- It will work with both koa and express. (Any server that exposes a `listen`
+  method, really)
 
 ## Example
 
