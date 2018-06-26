@@ -1,5 +1,7 @@
 # server helper
 
+[![Build Status](https://travis-ci.com/gustavnikolaj/server-helper.svg?branch=master)](https://travis-ci.com/gustavnikolaj/server-helper)
+
 Simple node.js server helper module.
 
 - It will run your server, and allow you to have a clean main application file,
@@ -24,7 +26,7 @@ serverHelper({
   appFileName: resolve(__dirname, "../lib/app"),
   config: {
     port: 5000,
-    typeOfWorld: 'Express-world'
+    typeOfWorld: "Express-world"
   }
 });
 ```
@@ -32,13 +34,13 @@ serverHelper({
 ```js
 // app.js
 
-const express = require('express');
+const express = require("express");
 
 module.exports = function appFactory(config) {
   const app = express();
 
-  app.get('/', (req, res, next) => {
-    res.send(`Hello, ${config.typeOfWorld || 'world'}!`);
+  app.get("/", (req, res, next) => {
+    res.send(`Hello, ${config.typeOfWorld || "world"}!`);
   });
 
   return app;
