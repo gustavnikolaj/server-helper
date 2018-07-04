@@ -16,7 +16,7 @@
   "devDependencies": {
     "eslint": "5.0.1",
     "eslint-config-pretty-standard": "2.0.0",
-    "jest": "23.2.0",
+    "jest": "23.3.0",
     "prettier": "1.13.7",
     "unexpected": "^10.38.0"
   },
