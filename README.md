@@ -1,5 +1,6 @@
 # server helper
 
+[![npm version](https://badge.fury.io/js/%40gustavnikolaj%2Fserver-helper.svg)](https://www.npmjs.com/package/@gustavnikolaj/server-helper)
 [![Build Status](https://travis-ci.com/gustavnikolaj/server-helper.svg?branch=master)](https://travis-ci.com/gustavnikolaj/server-helper)
 
 Simple node.js server helper module.
