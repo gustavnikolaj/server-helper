@@ -18,7 +18,7 @@
     "eslint-config-pretty-standard": "2.0.0",
     "jest": "23.5.0",
     "prettier": "1.14.2",
-    "unexpected": "^10.38.0"
+    "unexpected": "^10.39.0"
   },
   "repository": {
     "type": "git",
