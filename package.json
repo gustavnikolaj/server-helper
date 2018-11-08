@@ -17,14 +17,16 @@
     "eslint": "5.8.0",
     "eslint-config-pretty-standard": "2.0.0",
     "jest": "23.6.0",
-    "prettier": "1.14.3",
+    "prettier": "1.15.1",
     "unexpected": "^10.39.1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gustavnikolaj/server-helper.git"
   },
-  "keywords": [],
+  "keywords": [
+
+  ],
   "bugs": {
     "url": "https://github.com/gustavnikolaj/server-helper/issues"
   },
