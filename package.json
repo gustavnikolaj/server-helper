@@ -24,9 +24,7 @@
     "type": "git",
     "url": "git+https://github.com/gustavnikolaj/server-helper.git"
   },
-  "keywords": [
-
-  ],
+  "keywords": [],
   "bugs": {
     "url": "https://github.com/gustavnikolaj/server-helper/issues"
   },
