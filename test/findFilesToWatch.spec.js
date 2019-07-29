@@ -1,10 +1,7 @@
 const expect = require("unexpected").clone();
 const path = require("path");
-const findFilesToWatch = require("../findFilesToWatch");
-const fixturesRoot = path.resolve(
-  __dirname,
-  "../__fixtures__/findFilesToWatch"
-);
+const findFilesToWatch = require("../lib/findFilesToWatch");
+const fixturesRoot = path.resolve(__dirname, "../fixtures/findFilesToWatch");
 
 const normalizePath = origPath => origPath.split(path.sep).join("/");
 
@@ -42,34 +39,36 @@ expect.addAssertion(
   }
 );
 
-it("should find files to watch in a simple server", () =>
-  expect(
-    {
-      fixtureName: "simpleServer",
-      appFileName: "app.js"
-    },
-    "to yield files",
-    ["app.js", "dep1.js", "dep2.js", "lib/dep3.js"]
-  ));
+describe("findFilesToWatch", () => {
+  it("should find files to watch in a simple server", () =>
+    expect(
+      {
+        fixtureName: "simpleServer",
+        appFileName: "app.js"
+      },
+      "to yield files",
+      ["app.js", "dep1.js", "dep2.js", "lib/dep3.js"]
+    ));
 
-it("should find files to watch in a simple server with config", () =>
-  expect(
-    {
-      fixtureName: "simpleServer",
-      appFileName: "app.js",
-      watchConfig: "**/*.js"
-    },
-    "to yield files",
-    ["app.js", "dep1.js", "dep2.js", "lib/dep3.js"]
-  ));
+  it("should find files to watch in a simple server with config", () =>
+    expect(
+      {
+        fixtureName: "simpleServer",
+        appFileName: "app.js",
+        watchConfig: "**/*.js"
+      },
+      "to yield files",
+      ["app.js", "dep1.js", "dep2.js", "lib/dep3.js"]
+    ));
 
-it("should find files to watch in a server with packages", () =>
-  expect(
-    {
-      fixtureName: "serverWithPackages",
-      appFileName: "server/lib/app.js",
-      watchConfig: ["server/**/*.js", "packages/**/*.js"]
-    },
-    "to yield files",
-    ["server/app.js", "server/lib/dep.js", "packages/foo/index.js"]
-  ));
+  it("should find files to watch in a server with packages", () =>
+    expect(
+      {
+        fixtureName: "serverWithPackages",
+        appFileName: "server/lib/app.js",
+        watchConfig: ["server/**/*.js", "packages/**/*.js"]
+      },
+      "to yield files",
+      ["server/app.js", "server/lib/dep.js", "packages/foo/index.js"]
+    ));
+});
