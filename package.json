@@ -6,7 +6,7 @@
   "author": "Gustav Nikolaj Olsen <gustavnikolaj@gmail.com>",
   "version": "2.1.0",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint .  && prettier --check '**/*.js'",
     "test": "jest"
   },
   "dependencies": {
@@ -15,7 +15,12 @@
   },
   "devDependencies": {
     "eslint": "6.1.0",
-    "eslint-config-pretty-standard": "2.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
     "jest": "24.7.1",
     "prettier": "1.18.2",
     "unexpected": "^11.2.0"
