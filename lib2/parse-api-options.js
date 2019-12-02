@@ -10,7 +10,7 @@ function parseApiOptions(options) {
   }
 
   const unexpectedKeys = Object.keys(options).filter(
-    x => x !== "entrypoint" && x !== "watch"
+    x => x !== "entrypoint" && x !== "watch" && x !== "port"
   );
 
   if (unexpectedKeys.length !== 0) {
@@ -31,6 +31,14 @@ function parseApiOptions(options) {
 
   if (typeof options.watch === "boolean") {
     parsedOptions.watch = options.watch;
+  }
+
+  if ("port" in options) {
+    if (typeof options.port !== "number" || isNaN(options.port)) {
+      throw new Error("Expected port to be a number");
+    }
+
+    parsedOptions.port = options.port;
   }
 
   return parsedOptions;

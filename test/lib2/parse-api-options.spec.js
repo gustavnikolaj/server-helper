@@ -45,4 +45,26 @@ describe("parseApiOptions", () => {
       entrypoint: "foo"
     });
   });
+
+  it("should complain about an invalid port number", () => {
+    expect(
+      () => parseApiOptions({ port: null }),
+      "to throw",
+      "Expected port to be a number"
+    );
+  });
+
+  it("should complain about a NaN port number", () => {
+    expect(
+      () => parseApiOptions({ port: NaN }),
+      "to throw",
+      "Expected port to be a number"
+    );
+  });
+
+  it("should take a port", () => {
+    expect(parseApiOptions({ port: 1234 }), "to equal", {
+      port: 1234
+    });
+  });
 });

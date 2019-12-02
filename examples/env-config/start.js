@@ -1,7 +1,6 @@
-const serverHelper = require("../../");
+const serverHelper = require("../../lib2/api");
 const { resolve } = require("path");
 
 serverHelper({
-  appFileName: resolve(__dirname, "./app"),
-  configFileName: resolve(__dirname, "./config")
+  app: resolve(__dirname, "./app")
 });
