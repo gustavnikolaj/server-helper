@@ -13,11 +13,11 @@ function ensurePort(port) {
     throw new Error("Non number value for port.");
   }
 
-  return port;
+  return portNumber;
 }
 
 function ensureHost(host) {
-  if (typeof port !== "string") {
+  if (typeof host !== "string") {
     throw new Error("Expected string value");
   }
 
