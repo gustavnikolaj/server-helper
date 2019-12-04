@@ -14,15 +14,15 @@ environment specific. But even then, it is questionable how much it should grow
 into that space.
 
 A third version of configuration is the `server-helper` specific configuration
-(watch-mode, in-band, app-entrypoint etc), which itself is divided into
-application and environment specific configuration.
+(e.g. watch-mode and entrypoint), which itself is divided into application and
+environment specific configuration.
 
 ---
 
-As configuration is resolved from the environment, it is globally available for
-all the code running in the same process. That means that server-helper can just
-ignore the environment variables that it doesn't need, and allow the application
-to deal with that itself.
+When configuration is resolved from the environment, it is globally available
+for all the code running in the same process. That means that server-helper can
+just ignore the environment variables that it doesn't need, and allow the
+application to deal with that itself.
 
 ---
 
@@ -35,8 +35,6 @@ Application/run-time configuration:
 
 - `--watch` cli option > `watch` options value.
 - entrypoint from cli > entrypoint options value.
-
-Watch implies `MonitoredProcess`-mode, and `inBand`-mode will be the default.
 
 ---
 

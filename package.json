@@ -15,7 +15,7 @@
   ],
   "directories": {
     "bin": "./bin",
-    "doc": "./docs",
+    "doc": "./doc",
     "lib": "./lib"
   },
   "bin": {

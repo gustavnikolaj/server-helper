@@ -5,7 +5,7 @@ args and returns an express-like application.
 ```js
 const express = require("express");
 
-module.exports = opts => {
+module.exports = () => {
   const app = express();
 
   // ...
