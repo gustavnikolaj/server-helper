@@ -9,89 +9,86 @@ Simple node.js server helper module.
   which won't be cluttered with bootstrap code.
 - It can be used to restart your server on file change for a nice development
   experience.
-- It can be set up to run the process in band, making it easier to attach
-  debuggers.
-- It will work with both koa and express. (Any server that exposes a `listen`
-  method, really)
 
 ## Example
-
-```js
-// server-start.js
-
-const serverHelper = require("@gustavnikolaj/server-helper");
-const { resolve } = require("path");
-
-serverHelper({
-  inBand: !!process.argv.find(x => x === "--debug"),
-  appFileName: resolve(__dirname, "../lib/app"),
-  config: {
-    port: 5000,
-    typeOfWorld: "Express-world"
-  }
-});
-```
 
 ```js
 // app.js
 
 const express = require("express");
 
-module.exports = function appFactory(config) {
+module.exports = function appFactory() {
   const app = express();
 
   app.get("/", (req, res, next) => {
-    res.send(`Hello, ${config.typeOfWorld || "world"}!`);
+    res.send(`Hello, world!`);
   });
 
   return app;
 };
 ```
 
-## Options
+```
+$ server-helper app.js
+```
 
-### `options.inBand`
+## CLI Options
 
-Accepts a boolean. If set to true the application will be run in the same
-process as server-helper itself. False by default.
+- `--watch` / `-w`: Enable automatic restarting on file changes.
+- `--port` / `-p`: Change the port number. [Default: 3000]
+- `--host` / `-h`: Change the host.
 
-### `options.appFileName`
+## Programmatic use:
 
-Required. Absolute path to the main application file. The main application
-file must export a single function, which must return an application. When
-called it will be passed the configuration.
+```js
+// start.js
 
-### `options.configFileName`
+const serverHelper = require("@gustavnikolaj/server-helper");
 
-An absolute path to a javascript or json file that can be required. This is the
-configuration that will be passed to the application file. Either this option
-or the `options.config` option must be passed.
+serverHelper({
+  entrypoint: require.resolve("./app.js"),
+  port: 5000
+});
+```
 
-### `options.config`
+```
+$ node start.js
+```
 
-The same as `options.configFileName` except that this allows you to pass in a
-plain old javascript object directly.
+The command line flags are still supported.
 
 ## Config
 
-Parts of the configuration will also be read by server-helper.
+Configuration can be given in multiple different ways, to support different
+use-cases. See [doc/background/configuration.md](doc/background/configuration).
 
-### `config.port`
+Options given as cli flags are used before options given as environment
+variables, which are used before options given in the programmatic interface.
 
-By default the server will start on port 3000. By setting `config.port` you can
-control what port you want it to start on. The value, if provided, must be a
-number.
+### Configuration through cli flags
 
-### `config.watch`
+- `--watch` / `-w`: Enable automatic restarting on file changes.
+- `--port` / `-p`: Change the port number. [Default: 3000]
+- `--host` / `-h`: Change the host.
 
-Glob patterns for files that you want the server to watch for changes in order
-to trigger restarts.
+The path to the entrypoint file is given as the only non-flag argument.
 
-If you set it as true, it will use the pattern `**/*.js` in the folder that
-contains the application file.
+### Configuration through environment variables.
 
-If you set `options.appFileName` to `/Users/gustav/Projects/foo/server/app.js`
-it will watch all files matching `/Users/gustav/Projects/foo/server/**/*.js`.
+Configuration can also be passed through environment variables.
 
-Instead of a boolean, you can also pass in your own patterns. A single string,
-or an array of strings.
+- `PORT`: The port number to listen to.
+- `SERVERHELPER_PORT`: Same as `PORT`, but higher specificity.
+- `SERVERHELPER_HOST`: What host to bind to.
+
+### Configuration through options in api mode
+
+You call serverHelper with an options object as the only argument. This can only
+be done when invoking it programatically.
+
+Supported properties:
+
+- `entrypoint`: The path to the file that implements the server handler.
+- `port`: The port number to listen to. (number)
+- `host`: The host to bind to. (string)
+- `watch`: Enables watch mode. (boolean)
