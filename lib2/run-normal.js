@@ -8,9 +8,29 @@
  * }} options
  */
 function runNormal(options) {
-  console.log("Running normal mode with options", options);
+  const { entrypoint, port, host } = options;
 
-  throw new Error("Normal mode NYI");
+  const createApp = require(entrypoint);
+  const http = require("http");
+
+  let app = (req, res) => res.end("Booting...");
+  const httpServer = http.createServer((req, res) => app(req, res));
+
+  app = createApp({ httpServer, serverHelperConfig: options });
+
+  const listenArgs = [port];
+
+  if (host) {
+    listenArgs.push(host);
+  }
+
+  httpServer.listen(...listenArgs);
+
+  if (host) {
+    console.log("> Server running listening on %s:%s", host, port);
+  } else {
+    console.log("> Server listening on port %s", port);
+  }
 }
 
 module.exports = runNormal;
