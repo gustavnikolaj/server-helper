@@ -1,6 +1,6 @@
 const expect = require("unexpected").clone();
 const path = require("path");
-const findFilesToWatch = require("../lib/findFilesToWatch");
+const findFilesToWatch = require("../lib/find-files-to-watch");
 const fixturesRoot = path.resolve(__dirname, "../fixtures/findFilesToWatch");
 
 const normalizePath = origPath => origPath.split(path.sep).join("/");

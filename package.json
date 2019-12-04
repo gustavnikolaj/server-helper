@@ -2,14 +2,27 @@
   "name": "@gustavnikolaj/server-helper",
   "description": "Resolve configuration and restart server on changes.",
   "license": "MIT",
-  "main": "index.js",
+  "main": "lib/api.js",
   "author": "Gustav Nikolaj Olsen <gustavnikolaj@gmail.com>",
   "version": "2.2.0",
   "scripts": {
-    "lint": "eslint .  && prettier --check '**/*.js'",
+    "lint": "eslint . && prettier --check '**/*.js'",
     "test": "mocha"
   },
+  "files": [
+    "bin",
+    "lib"
+  ],
+  "directories": {
+    "bin": "./bin",
+    "doc": "./doc",
+    "lib": "./lib"
+  },
+  "bin": {
+    "server-helper": "./bin/server-helper-cli.js"
+  },
   "dependencies": {
+    "getopts": "^2.2.5",
     "glob": "^7.1.3",
     "invariant": "^2.2.2"
   },
@@ -34,5 +47,8 @@
   "bugs": {
     "url": "https://github.com/gustavnikolaj/server-helper/issues"
   },
-  "homepage": "https://github.com/gustavnikolaj/server-helper#readme"
+  "homepage": "https://github.com/gustavnikolaj/server-helper#readme",
+  "mocha": {
+    "recursive": true
+  }
 }
