@@ -60,7 +60,8 @@ The command line flags are still supported.
 ## Config
 
 Configuration can be given in multiple different ways, to support different
-use-cases. See [doc/background/configuration.md](doc/background/configuration).
+use-cases. See
+[doc/background/configuration.md](doc/background/configuration.md).
 
 Options given as cli flags are used before options given as environment
 variables, which are used before options given in the programmatic interface.
