@@ -1,4 +1,4 @@
-const parseEnvOptions = require("../../lib2/parse-env-options");
+const parseEnvOptions = require("../lib/parse-env-options");
 const expect = require("unexpected");
 
 describe("parseEnvOptions", () => {

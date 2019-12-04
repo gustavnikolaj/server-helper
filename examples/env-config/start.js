@@ -1,4 +1,4 @@
-const serverHelper = require("../../lib2/api");
+const serverHelper = require("../../lib/api");
 const { resolve } = require("path");
 
 serverHelper({

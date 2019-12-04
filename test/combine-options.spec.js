@@ -1,4 +1,4 @@
-const combineOptions = require("../../lib2/combine-options");
+const combineOptions = require("../lib/combine-options");
 const expect = require("unexpected");
 
 describe("combineOptions", () => {

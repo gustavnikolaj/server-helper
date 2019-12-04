@@ -1,4 +1,4 @@
-const validateOptions = require("../../lib2/validate-options");
+const validateOptions = require("../lib/validate-options");
 const expect = require("unexpected");
 
 describe("validateOptions", () => {

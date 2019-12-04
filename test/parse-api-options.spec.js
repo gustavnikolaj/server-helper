@@ -1,4 +1,4 @@
-const parseApiOptions = require("../../lib2/parse-api-options");
+const parseApiOptions = require("../lib/parse-api-options");
 const expect = require("unexpected");
 
 describe("parseApiOptions", () => {
