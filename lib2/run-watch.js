@@ -128,7 +128,13 @@ function runWatch(options) {
   let restartTimeout = null;
 
   monitoredProcess
-    .on("start", () => !restarting && console.log("> Worker started."))
+    .on("start", () => {
+      if (restarting) {
+        console.log("> Worker restarted.");
+      } else {
+        console.log("> Worker started.");
+      }
+    })
     .on("stop", () => !restarting && console.log("> Worker stopped."))
     .on("output", (output, streamName) => process[streamName].write(output))
     .on("crash", (exitCode, signalName) => {
@@ -146,21 +152,23 @@ function runWatch(options) {
 
   setupWatchers(options.entrypoint, () => {
     if (restartTimeout !== null) {
-      console.log("push back restart");
       clearTimeout(restartTimeout);
+    } else {
+      console.warn("\n> Source file(s) changed, restarting...");
     }
 
-    console.log("eventually restarting");
-    restarting = true;
-    monitoredProcess.once("start", () => {
-      restarting = false;
-    });
+    if (!restarting) {
+      restarting = true;
+
+      monitoredProcess.once("start", () => {
+        restarting = false;
+      });
+    }
 
     restartTimeout = setTimeout(() => {
-      console.log("finally restarting");
       monitoredProcess.restart();
       restartTimeout = null;
-    }, 1000);
+    }, 250);
   });
 
   monitoredProcess.start();
