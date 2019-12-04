@@ -2,7 +2,7 @@ const { spawn } = require("child_process");
 const { EventEmitter } = require("events");
 const path = require("path");
 const fs = require("fs");
-const findFilesToWatch = require("../lib/findFilesToWatch");
+const findFilesToWatch = require("./find-files-to-watch");
 
 class MonitoredProcess extends EventEmitter {
   constructor({ entrypoint, port, host }) {
