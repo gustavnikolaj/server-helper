@@ -1,3 +1,8 @@
+const defaults = {
+  port: 3000,
+  watch: false
+};
+
 /**
  * Combines multiple partial configuration objects to a single one with the
  * highest precedent options picked out.
@@ -14,8 +19,8 @@
  *  host?: any
  * }}
  */
-function combineOptions(optionsBySource) {
-  const resolvedOptions = {};
+function combineOptions(optionsBySource = {}) {
+  const resolvedOptions = { ...defaults };
 
   const cliOpts = optionsBySource.cli || {};
   const envOpts = optionsBySource.env || {};
@@ -41,8 +46,6 @@ function combineOptions(optionsBySource) {
     resolvedOptions.watch = cliOpts.watch;
   } else if (apiOpts.watch) {
     resolvedOptions.watch = apiOpts.watch;
-  } else {
-    resolvedOptions.watch = false;
   }
 
   if (cliOpts.entrypoint) {
