@@ -26,12 +26,11 @@ describe("parseCliOptions", () => {
     expect(parseCliOptions("/foo", ["-w"]), "to equal", { watch: true });
   });
 
-  it("should throw for a string watch flag", () => {
-    expect(
-      () => parseCliOptions("/foo", ["-w=foo"]),
-      "to throw",
-      "Unexpected value for --watch"
-    );
+  it("should take a watch flag followed by an entrypoint", () => {
+    expect(parseCliOptions("/foo", ["--watch", "lib/app"]), "to equal", {
+      watch: true,
+      entrypoint: "/foo/lib/app"
+    });
   });
 
   it("should take a port flag", () => {
