@@ -26,7 +26,7 @@ describe("validateOptions", () => {
     expect(
       () =>
         validateOptions({
-          entrypoint: null
+          entrypoint: null,
         }),
       "to throw",
       "entrypoint must be a string"
@@ -37,7 +37,7 @@ describe("validateOptions", () => {
     expect(
       () =>
         validateOptions({
-          entrypoint: "foo"
+          entrypoint: "foo",
         }),
       "to throw",
       "No port option given"
@@ -47,7 +47,7 @@ describe("validateOptions", () => {
   it("should allow not passing a host", () => {
     const options = {
       entrypoint: "foo",
-      port: 3000
+      port: 3000,
     };
 
     expect(validateOptions(options), "to equal", options);
@@ -59,7 +59,7 @@ describe("validateOptions", () => {
         validateOptions({
           entrypoint: "foo",
           port: 3000,
-          host: 3000
+          host: 3000,
         }),
       "to throw",
       "host must be a string"
@@ -69,7 +69,7 @@ describe("validateOptions", () => {
   it("should allow not passing a value for watch", () => {
     const options = {
       entrypoint: "foo",
-      port: 3000
+      port: 3000,
     };
 
     expect(validateOptions(options), "to equal", options);
@@ -81,7 +81,7 @@ describe("validateOptions", () => {
         validateOptions({
           entrypoint: "foo",
           port: 3000,
-          watch: 1
+          watch: 1,
         }),
       "to throw",
       "watch must be boolean"

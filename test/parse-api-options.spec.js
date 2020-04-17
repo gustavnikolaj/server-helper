@@ -18,7 +18,7 @@ describe("parseApiOptions", () => {
     expect(
       () =>
         parseApiOptions({
-          unknownOption: "foobar"
+          unknownOption: "foobar",
         }),
       "to throw",
       "Got unexpected options values: unknownOption"
@@ -33,7 +33,7 @@ describe("parseApiOptions", () => {
     expect(
       () =>
         parseApiOptions({
-          entrypoint: null
+          entrypoint: null,
         }),
       "to throw",
       "Expected entrypoint to be a string"
@@ -42,7 +42,7 @@ describe("parseApiOptions", () => {
 
   it("should take an entrypoint", () => {
     expect(parseApiOptions({ entrypoint: "foo" }), "to equal", {
-      entrypoint: "foo"
+      entrypoint: "foo",
     });
   });
 
@@ -64,7 +64,7 @@ describe("parseApiOptions", () => {
 
   it("should take a port", () => {
     expect(parseApiOptions({ port: 1234 }), "to equal", {
-      port: 1234
+      port: 1234,
     });
   });
 });

@@ -3,13 +3,13 @@ const path = require("path");
 const findFilesToWatch = require("../lib/find-files-to-watch");
 const fixturesRoot = path.resolve(__dirname, "../fixtures/findFilesToWatch");
 
-const normalizePath = origPath => origPath.split(path.sep).join("/");
+const normalizePath = (origPath) => origPath.split(path.sep).join("/");
 
 expect.addAssertion(
   "<array> to match when resolved from <string> <array>",
   (expect, subject, dirname, files) =>
     expect(
-      subject.map(file => normalizePath(path.relative(dirname, file))),
+      subject.map((file) => normalizePath(path.relative(dirname, file))),
       "to equal",
       files
     )
@@ -21,7 +21,7 @@ expect.addAssertion(
     const fixturesPath = path.resolve(fixturesRoot, fixtureName);
     const appFileNamePath = path.resolve(fixturesPath, appFileName);
     if (Array.isArray(watchConfig)) {
-      watchConfig = watchConfig.map(pattern =>
+      watchConfig = watchConfig.map((pattern) =>
         path.resolve(fixturesPath, pattern)
       );
     }
@@ -29,9 +29,9 @@ expect.addAssertion(
     return expect(
       findFilesToWatch(appFileNamePath, watchConfig),
       "to be fulfilled"
-    ).then(files =>
+    ).then((files) =>
       expect(
-        files.map(file => normalizePath(path.relative(fixturesPath, file))),
+        files.map((file) => normalizePath(path.relative(fixturesPath, file))),
         "to equal",
         value
       )
@@ -44,7 +44,7 @@ describe("findFilesToWatch", () => {
     expect(
       {
         fixtureName: "simpleServer",
-        appFileName: "app.js"
+        appFileName: "app.js",
       },
       "to yield files",
       ["app.js", "dep1.js", "dep2.js", "lib/dep3.js"]
@@ -55,7 +55,7 @@ describe("findFilesToWatch", () => {
       {
         fixtureName: "simpleServer",
         appFileName: "app.js",
-        watchConfig: "**/*.js"
+        watchConfig: "**/*.js",
       },
       "to yield files",
       ["app.js", "dep1.js", "dep2.js", "lib/dep3.js"]
@@ -66,7 +66,7 @@ describe("findFilesToWatch", () => {
       {
         fixtureName: "serverWithPackages",
         appFileName: "server/lib/app.js",
-        watchConfig: ["server/**/*.js", "packages/**/*.js"]
+        watchConfig: ["server/**/*.js", "packages/**/*.js"],
       },
       "to yield files",
       ["server/app.js", "server/lib/dep.js", "packages/foo/index.js"]

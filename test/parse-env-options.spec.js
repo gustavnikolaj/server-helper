@@ -24,7 +24,7 @@ describe("parseEnvOptions", () => {
 
   it("should set a port using SERVERHELPER_PORT", () => {
     expect(parseEnvOptions({ SERVERHELPER_PORT: "3000" }), "to equal", {
-      port: 3000
+      port: 3000,
     });
   });
 
@@ -38,7 +38,7 @@ describe("parseEnvOptions", () => {
 
   it("should set a host using SERVERHELPER_HOST", () => {
     expect(parseEnvOptions({ SERVERHELPER_HOST: "www.foo.com" }), "to equal", {
-      host: "www.foo.com"
+      host: "www.foo.com",
     });
   });
 
@@ -46,7 +46,7 @@ describe("parseEnvOptions", () => {
     expect(
       () =>
         parseEnvOptions({
-          PORT: "tretusinde"
+          PORT: "tretusinde",
         }),
       "to throw",
       "Non number value for port."

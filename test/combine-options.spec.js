@@ -9,7 +9,7 @@ describe("combineOptions", () => {
   it("should return defaults when not given any arguments", () => {
     expect(combineOptions(), "to equal", {
       port: 3000,
-      watch: false
+      watch: false,
     });
   });
 
@@ -17,11 +17,11 @@ describe("combineOptions", () => {
     // defaults
     expect(combineOptions(), "to equal", {
       port: 3000,
-      watch: false
+      watch: false,
     });
     expect(
       combineOptions({
-        api: { port: 3001, watch: true }
+        api: { port: 3001, watch: true },
       }),
       "to equal",
       { port: 3001, watch: true }
@@ -31,7 +31,7 @@ describe("combineOptions", () => {
   it("should allow setting port, host, watch and entrypoint from api", () => {
     expect(
       combineOptions({
-        api: { port: 3001, watch: true, host: "foo.com", entrypoint: "foo.js" }
+        api: { port: 3001, watch: true, host: "foo.com", entrypoint: "foo.js" },
       }),
       "to equal",
       { port: 3001, watch: true, host: "foo.com", entrypoint: "foo.js" }
@@ -41,7 +41,7 @@ describe("combineOptions", () => {
   it("should allow setting port, host, watch and entrypoint from cli", () => {
     expect(
       combineOptions({
-        cli: { port: 3001, watch: true, host: "foo.com", entrypoint: "foo.js" }
+        cli: { port: 3001, watch: true, host: "foo.com", entrypoint: "foo.js" },
       }),
       "to equal",
       { port: 3001, watch: true, host: "foo.com", entrypoint: "foo.js" }
@@ -51,7 +51,7 @@ describe("combineOptions", () => {
   it("should allow setting port, host, watch and entrypoint from env", () => {
     expect(
       combineOptions({
-        env: { port: 3001, host: "foo.com" }
+        env: { port: 3001, host: "foo.com" },
       }),
       "to equal",
       { port: 3001, host: "foo.com", watch: false }
@@ -63,7 +63,7 @@ describe("combineOptions", () => {
       combineOptions({
         api: { port: 3001 },
         cli: { port: 3002 },
-        env: { port: 3003 }
+        env: { port: 3003 },
       }),
       "to satisfy",
       { port: 3002 }
@@ -74,7 +74,7 @@ describe("combineOptions", () => {
     expect(
       combineOptions({
         api: { port: 3001 },
-        env: { port: 3003 }
+        env: { port: 3003 },
       }),
       "to satisfy",
       { port: 3003 }
@@ -84,7 +84,7 @@ describe("combineOptions", () => {
   it("should prefer api port over default", () => {
     expect(
       combineOptions({
-        api: { port: 3001 }
+        api: { port: 3001 },
       }),
       "to satisfy",
       { port: 3001 }
@@ -96,7 +96,7 @@ describe("combineOptions", () => {
       combineOptions({
         api: { host: "api.com" },
         cli: { host: "cli.com" },
-        env: { host: "env.com" }
+        env: { host: "env.com" },
       }),
       "to satisfy",
       { host: "cli.com" }
@@ -107,7 +107,7 @@ describe("combineOptions", () => {
     expect(
       combineOptions({
         api: { host: "api.com" },
-        env: { host: "env.com" }
+        env: { host: "env.com" },
       }),
       "to satisfy",
       { host: "env.com" }
@@ -117,7 +117,7 @@ describe("combineOptions", () => {
   it("should use api host over default", () => {
     expect(
       combineOptions({
-        api: { host: "api.com" }
+        api: { host: "api.com" },
       }),
       "to satisfy",
       { host: "api.com" }
@@ -128,7 +128,7 @@ describe("combineOptions", () => {
     expect(
       combineOptions({
         api: { watch: "apifalse" },
-        cli: { watch: "clitrue" }
+        cli: { watch: "clitrue" },
       }),
       "to satisfy",
       { watch: "clitrue" }
@@ -138,7 +138,7 @@ describe("combineOptions", () => {
   it("should use api watch", () => {
     expect(
       combineOptions({
-        api: { watch: "apitrue" }
+        api: { watch: "apitrue" },
       }),
       "to satisfy",
       { watch: "apitrue" }
@@ -149,7 +149,7 @@ describe("combineOptions", () => {
     expect(
       combineOptions({
         api: { entrypoint: "api-entrypoint" },
-        cli: { entrypoint: "cli-entrypoint" }
+        cli: { entrypoint: "cli-entrypoint" },
       }),
       "to satisfy",
       { entrypoint: "cli-entrypoint" }
@@ -159,7 +159,7 @@ describe("combineOptions", () => {
   it("should use api entrypoint", () => {
     expect(
       combineOptions({
-        api: { entrypoint: "api-entrypoint" }
+        api: { entrypoint: "api-entrypoint" },
       }),
       "to satisfy",
       { entrypoint: "api-entrypoint" }
@@ -171,16 +171,16 @@ describe("combineOptions", () => {
       combineOptions({
         env: {
           port: 39492,
-          host: "service.one.com"
+          host: "service.one.com",
         },
-        api: { port: 3000, entrypoint: "main.js" }
+        api: { port: 3000, entrypoint: "main.js" },
       }),
       "to equal",
       {
         port: 39492,
         host: "service.one.com",
         entrypoint: "main.js",
-        watch: false
+        watch: false,
       }
     );
   });
@@ -189,13 +189,13 @@ describe("combineOptions", () => {
     expect(
       combineOptions({
         cli: { watch: true, entrypoint: "main2.js" },
-        api: { port: 3000, entrypoint: "main.js" }
+        api: { port: 3000, entrypoint: "main.js" },
       }),
       "to equal",
       {
         port: 3000,
         entrypoint: "main2.js",
-        watch: true
+        watch: true,
       }
     );
   });

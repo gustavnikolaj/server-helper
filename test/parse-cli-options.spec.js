@@ -29,19 +29,19 @@ describe("parseCliOptions", () => {
   it("should take a watch flag followed by an entrypoint", () => {
     expect(parseCliOptions("/foo", ["--watch", "lib/app"]), "to equal", {
       watch: true,
-      entrypoint: "/foo/lib/app"
+      entrypoint: "/foo/lib/app",
     });
   });
 
   it("should take a port flag", () => {
     expect(parseCliOptions("/foo", ["--port", "1000"]), "to equal", {
-      port: 1000
+      port: 1000,
     });
   });
 
   it("should take a p flag (shortform port)", () => {
     expect(parseCliOptions("/foo", ["-p", "1000"]), "to equal", {
-      port: 1000
+      port: 1000,
     });
   });
 
@@ -55,13 +55,13 @@ describe("parseCliOptions", () => {
 
   it("should take a host flag", () => {
     expect(parseCliOptions("/foo", ["--host", "localhost"]), "to equal", {
-      host: "localhost"
+      host: "localhost",
     });
   });
 
   it("should take a h flag (shortform port)", () => {
     expect(parseCliOptions("/foo", ["-h", "0.0.0.0"]), "to equal", {
-      host: "0.0.0.0"
+      host: "0.0.0.0",
     });
   });
 
@@ -75,7 +75,7 @@ describe("parseCliOptions", () => {
 
   it("should take a single extra arg as the entrypoint resolved to cwd", () => {
     expect(parseCliOptions("/foo", ["bar"]), "to equal", {
-      entrypoint: "/foo/bar"
+      entrypoint: "/foo/bar",
     });
   });
 
@@ -87,7 +87,7 @@ describe("parseCliOptions", () => {
         port: 3000,
         host: "0.0.0.0",
         watch: true,
-        entrypoint: "/foo/bar"
+        entrypoint: "/foo/bar",
       }
     );
   });
