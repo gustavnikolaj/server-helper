@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "getopts": "^2.2.5",
-    "glob": "^8.0.3",
+    "glob": "^10.2.3",
     "invariant": "^2.2.2",
     "read-pkg-up": "^9.0.0",
     "semver": "^7.1.3"
